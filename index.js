@@ -7,13 +7,15 @@ app.use(express.json());
 app.get('/', function (req, res) {
 
   let pagina = req.query.url;
+  let url_dividida = pagina.split('/');
+  let host = url_dividida[2];
   
-  if(pagina.includes('e.ruiz')){
+  if(host.includes('e.ruiz')){
     console.log('Verificando host de la peticion GET');
     console.log('Host identificado como sitio virtual: e.ruiz');
     console.log('Redirigiendo petición http GET a http://sophia.javeriana.edu.co/~eruiz/index.html' + '\n------------------\n');
     res.redirect('http://sophia.javeriana.edu.co/~eruiz/index.html');
-  }else if(pagina.includes('r.paez')){
+  }else if(host.includes('r.paez')){
     console.log('Verificando host de la peticion GET');
     console.log('Host identificado como sitio virtual: r.paez');
     console.log('Redirigiendo petición http GET a http://sophia.javeriana.edu.co/~rpaez/index.html' + '\n------------------\n');
@@ -27,14 +29,16 @@ app.get('/', function (req, res) {
 
 app.post('/', (req, res)=>{
   let pagina = req.query.url;
+  let url_dividida = pagina.split('/');
+  let host = url_dividida[2];
   
-  if(pagina.includes('e.ruiz')){
+  if(host.includes('e.ruiz')){
     console.log('Verificando host de la peticion POST');
     console.log('Host identificado como sitio virtual: e.ruiz');
     console.log(`Redirigiendo petición http POST a http://sophia.javeriana.edu.co/~eruiz/index.html`)
     console.log('Datos encontrados: ' + JSON.stringify(req.body) + '\n------------------\n');
     res.redirect('http://sophia.javeriana.edu.co/~eruiz/index.html');
-  }else if(pagina.includes('r.paez')){
+  }else if(host.includes('r.paez')){
     console.log('Verificando host de la peticion POST');
     console.log('Host identificado como sitio virtual: r.paez');
     console.log('Redirigiendo petición http POST a http://sophia.javeriana.edu.co/~rpaez/index.html')
