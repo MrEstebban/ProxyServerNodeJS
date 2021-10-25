@@ -46,7 +46,8 @@ app.post('/', (req, res)=>{
     res.redirect('http://sophia.javeriana.edu.co/~rpaez/index.html');
   }else{
     console.log('Verificando host de la peticion POST');
-    console.log('No pertenece a un sitio web virtual' + '\n------------------\n');
+    console.log('No pertenece a un sitio web virtual');
+    console.log('Datos encontrados: ' + JSON.stringify(req.body) + '\n------------------\n');
     res.redirect(pagina);
   }
 });
